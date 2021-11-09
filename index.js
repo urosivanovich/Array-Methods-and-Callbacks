@@ -35,7 +35,7 @@ function getFinals(array) {
    
 }
 
-console.log(getFinals(fifaData));
+console.log('task 2', getFinals(fifaData));
 
 
 
@@ -51,7 +51,7 @@ function getYears(array, getFinalsCB) {
  return years;
 }
 
-console.log(getYears(fifaData, getFinals));
+console.log('task3', getYears(fifaData, getFinals));
 
 
 
@@ -71,7 +71,7 @@ function getWinners(array, getFinalsCB) {
      } )
      return winners;
 }
-console.log(getWinners(fifaData, getFinals));
+console.log('task 4', getWinners(fifaData, getFinals));
 
 
 
@@ -86,10 +86,14 @@ Use the higher-order function getWinnersByYear to do the following:
 hint: the strings returned need to exactly match the string in step 4.
  */
 
-function getWinnersByYear(/* code here */) {
-    /* code here */
+function getWinnersByYear(data, getFinalsCB, getYearsCB, getWinnersCB) {
+    const years = getYearsCB(data, getFinalsCB);
+    const winners = getWinnersCB(data, getFinalsCB);
+
+    return winners.map((item,index) => `In ${years[index]}, ${item} won the world cup!`)
 }
 
+console.log(getWinnersByYear(fifaData, getFinals, getYears, getWinners));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
