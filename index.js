@@ -95,7 +95,7 @@ function getWinnersByYear(data, getFinalsCB, getYearsCB, getWinnersCB) {
 
 console.log(getWinnersByYear(fifaData, getFinals, getYears, getWinners));
 
-
+ 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use the higher order function getAverageGoals to do the following: 
  1. Receive the callback function getFinals from task 2 ensure you pass in the data as an argument
@@ -113,7 +113,7 @@ function getAverageGoals(getFinalsCB) {
    return (averageG/getFinalsCB.length).toFixed(2)
 }
 
-console.log(getAverageGoals(getFinals(fifaData)));
+console.log('task 6', getAverageGoals(getFinals(fifaData)));
 
 
 /// 🥅 STRETCH 🥅 ///
@@ -124,11 +124,27 @@ Create a function called `getCountryWins` that takes the parameters `data` and `
 Hint: Investigate your data to find "team initials"!
 Hint: use `.reduce` */
 
-function getCountryWins(/* code here */) {
-
-    /* code here */
+function getCountryWins(data, teamInitials) {
+    const totalWins = data.reduce((acc, item)=> { 
+        if(teamInitials === item['Home Team Initials']){
+            if(item['Home Team Goals'] > item["Away Team Goals"]){
+               acc +=1
+            }
+        } 
+    
+        if(teamInitials === item['Away Team Initials']){
+            if(item['Away Team Goals'] > item["Home Team Goals"]){
+                acc +=1
+            }
+        }
+        return acc;
+    }, 0)
+  
+    return totalWins; 
 
 }
+
+console.log('task strech 1', getCountryWins(fifaData, 'NED'));
 
 
 
